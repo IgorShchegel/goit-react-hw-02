@@ -18,12 +18,17 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('feedback', JSON.stringify(feedback));
+  }, [feedback]);
+
+
   
 
   const updateFeedback = (feedbackType) => {
     const newFeedback = { ...feedback, [feedbackType]: feedback[feedbackType] + 1, };
     setFeedback(newFeedback);
-    localStorage.setItem('feedback', JSON.stringify(newFeedback));
+    
   };
 
   const resetFeedback = () => {
